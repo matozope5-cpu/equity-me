@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Eligibility | Equity Eazzy Loans</title>
+    
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="192x192" href="icons/icon.192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icons/icon.512.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- SweetAlert -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #9A381F;
+            --primary-dark: #7A2A18;
+            --secondary: #FAE25D;
+            --accent: #FAE25D;
+            --white: #FFFFFF;
+            --off-white: #F9FAFB;
+            --light-gray: #E8EDF2;
+            --gray: #64748B;
+            --dark-gray: #334155;
+            --black: #1E293B;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
+            --border-radius-sm: 8px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 16px;
+            --border-radius-xl: 20px;
+            --border-radius-full: 9999px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f0f9ff 0%, #fef6ff 100%);
+            color: var(--black);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Header with progress indicator */
+        .page-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            padding: 1rem;
+            box-shadow: var(--shadow-sm);
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            color: var(--gray);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--border-radius-sm);
+            transition: all 0.2s;
+        }
+
+        .back-btn:hover {
+            background: var(--light-gray);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 2rem;
+            height: 2rem;
+            background: var(--primary);
+            border-radius: var(--border-radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 1rem;
+        }
+
+        .logo-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--black);
+        }
+
+        .logo-text .equity {
+            color: var(--primary);
+        }
+
+        .logo-text .eazzy {
+            color: var(--secondary);
+        }
+
+        .logo-text .loans {
+            color: var(--primary);
+        }
+
+        .progress-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--light-gray);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+            width: 25%;
+            transition: width 0.3s ease;
+        }
+
+        /* Main content */
+        .eligibility-container {
+            width: 100%;
+            max-width: 400px;
+            margin-top: 4.5rem;
+            padding-bottom: 2rem;
+        }
+
+        /* Step indicator */
+        .step-indicator {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            line-height: 2.5rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .step-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--black);
+        }
+
+        .step-subtitle {
+            color: var(--gray);
+            font-size: 0.95rem;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        /* Form styling */
+        .eligibility-form {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 1.75rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+        }
+
+        .form-label span {
+            color: var(--error);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--border-radius-md);
+            font-size: 1rem;
+            transition: all 0.2s;
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(154, 56, 31, 0.1);
+        }
+
+        .form-control::placeholder {
+            color: var(--gray);
+            opacity: 0.6;
+        }
+
+        .input-with-icon {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 16px;
+            padding-right: 3rem;
+        }
+
+        /* Loan amount preview */
+        .loan-preview {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .loan-amount {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .loan-range {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Trust indicators */
+        .trust-indicators {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--white);
+            padding: 0.75rem;
+            border-radius: var(--border-radius-md);
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--light-gray);
+        }
+
+        .trust-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            background: rgba(154, 56, 31, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        /* Submit button */
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--secondary);
+            color: var(--primary-dark);
+            border: none;
+            border-radius: var(--border-radius-xl);
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            background: #f5d53a;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(154, 56, 31, 0.2);
+        }
+
+        .btn-submit:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Footer info */
+        .footer-info {
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .info-icon {
+            color: var(--success);
+            font-size: 1rem;
+        }
+
+        /* Loading overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            flex-direction: column;
+        }
+
+        .loading-spinner {
+            width: 3.5rem;
+            height: 3.5rem;
+            border: 3px solid rgba(154, 56, 31, 0.1);
+            border-radius: 50%;
+            border-top: 3px solid var(--primary);
+            animation: spin 1s linear infinite;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: var(--dark-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .loading-subtext {
+            font-size: 0.95rem;
+            color: var(--gray);
+            max-width: 250px;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .eligibility-container {
+                margin-top: 4rem;
+            }
+            
+            .eligibility-form {
+                padding: 1.5rem;
+            }
+            
+            .loan-preview {
+                padding: 1.25rem;
+            }
+            
+            .loan-amount {
+                font-size: 1.75rem;
+            }
+            
+            .trust-indicators {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .step-title {
+                font-size: 1.25rem;
+            }
+            
+            .eligibility-form {
+                padding: 1.25rem;
+            }
+            
+            .form-control {
+                padding: 0.75rem;
+            }
+        }
+
+        .form-control:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        .btn-submit:focus-visible {
+            outline: 2px solid var(--primary-dark);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page Header with Progress Bar -->
+    <header class="page-header">
+        <div class="header-content">
+            <button class="back-btn" onclick="window.history.back()" aria-label="Go back">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="equity">Equity</span>
+                    <span class="eazzy">Eazzy</span>
+                    <span class="loans">Loans</span>
+                </div>
+            </div>
+            
+            <div style="width: 2.5rem;"></div> <!-- Spacer -->
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+    </header>
+
+    <main class="eligibility-container">
+        <!-- Step Indicator -->
+        <div class="step-indicator">
+            <div class="step-number">1</div>
+            <h1 class="step-title">Check Eligibility</h1>
+            <p class="step-subtitle">Tell us a few details to see what you qualify for</p>
+        </div>
+
+        <!-- Loan Amount Preview -->
+        <div class="loan-preview">
+            <div class="loan-amount">Ksh 500 - 50,000</div>
+            <p class="loan-range">Flexible loan amounts available</p>
+        </div>
+
+        <!-- Eligibility Form -->
+        <form id="eligibility_form" class="eligibility-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="name" class="form-label">Full Name <span>*</span></label>
+                <div class="input-with-icon">
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Enter your full name" required>
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone_number" class="form-label">Phone Number <span>*</span></label>
+                <div class="input-with-icon">
+                    <input type="tel" name="phone_number" id="phone_number" class="form-control" placeholder="07XX XXX XXX" required>
+                    <div class="input-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                </div>
+                <small style="color: var(--gray); font-size: 0.8rem; margin-top: 0.25rem; display: block;">
+                    Must be a valid Kenyan number
+                </small>
+            </div>
+            
+            <div class="form-group">
+                <label for="id_number" class="form-label">ID Number <span>*</span></label>
+                <div class="input-with-icon">
+                    <input type="number" name="id_number" id="id_number" class="form-control" placeholder="Enter your national ID" required>
+                    <div class="input-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="loan_type" class="form-label">Loan Purpose <span>*</span></label>
+                <select name="loan_type" id="loan_type" class="form-control" required>
+                    <option value="" disabled selected>Select loan purpose</option>
+                    <option value="Business">Business Investment</option>
+                    <option value="Personal">Personal Use</option>
+                    <option value="Education">Education Fees</option>
+                    <option value="Medical">Medical Emergency</option>
+                    <option value="Emergency">Other Emergency</option>
+                </select>
+            </div>
+
+            <!-- Trust Indicators -->
+            <div class="trust-indicators">
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <span>Bank-Level Security</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <span>5-Minute Approval</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <span>No Paperwork</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <span>Licensed Provider</span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submitBtn">
+                Check Eligibility
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </form>
+
+        <!-- Footer Information -->
+        <div class="footer-info">
+            <div class="info-item">
+                <i class="fas fa-check-circle info-icon"></i>
+                <span>No credit bureau checks</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-check-circle info-icon"></i>
+                <span>No guarantors required</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-check-circle info-icon"></i>
+                <span>Funds sent to M-Pesa instantly</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Checking Eligibility</p>
+        <p class="loading-subtext">We're analyzing your information to find the best loan options for you.</p>
+    </div>
+
+    <!-- SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+
+    <script>
+        const nameRegex = /^[a-zA-Z\s.'-]{2,}$/;
+        const phoneRegex = /^(?:\+?254|0)[17]\d{8}$/;
+        const idRegex = /^\d{7,10}$/;
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            const f = e.target;
+            const name = f.name.value.trim();
+            const phone = f.phone_number.value.trim();
+            const id = f.id_number.value.trim();
+            const type = f.loan_type.value;
+
+            if (!nameRegex.test(name)) {
+                return Swal.fire({
+                    title: 'Invalid Name',
+                    text: 'Please enter your full name (letters only)',
+                    icon: 'error',
+                    confirmButtonColor: '#4361ee'
+                });
+            }
+            if (!phoneRegex.test(phone)) {
+                return Swal.fire({
+                    title: 'Invalid Phone',
+                    text: 'Please enter a valid Kenyan phone number',
+                    icon: 'error',
+                    confirmButtonColor: '#4361ee'
+                });
+            }
+            if (!idRegex.test(id)) {
+                return Swal.fire({
+                    title: 'Invalid ID',
+                    text: 'Please enter a valid Kenyan ID (7-10 digits)',
+                    icon: 'error',
+                    confirmButtonColor: '#4361ee'
+                });
+            }
+            if (!type) {
+                return Swal.fire({
+                    title: 'Missing Loan Type',
+                    text: 'Please select your loan purpose',
+                    icon: 'error',
+                    confirmButtonColor: '#4361ee'
+                });
+            }
+
+            // Show loading popup
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            loadingOverlay.style.display = 'flex';
+
+            // Store data and redirect after delay
+            setTimeout(() => {
+                sessionStorage.setItem('myLoan', JSON.stringify({
+                    name,
+                    phone_number: phone,
+                    id_number: id,
+                    loan_type: type
+                }));
+                
+                // Hide loading overlay before navigation
+                loadingOverlay.style.display = 'none';
+                
+                // Navigate to next page (adjust if needed)
+                window.location.href = 'apply.html';
+            }, 2500);
+        }
+
+        // Hide loading overlay when page loads (in case user navigates back)
+        window.addEventListener('pageshow', function(event) {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            if (loadingOverlay) {
+                loadingOverlay.style.display = 'none';
+            }
+        });
+
+        window.onload = () => {
+            const data = JSON.parse(sessionStorage.getItem('myLoan') || '{}');
+            if (data.name) {
+                document.getElementById('name').value = data.name;
+                document.getElementById('name').dispatchEvent(new Event('input'));
+            }
+            if (data.phone_number) {
+                document.getElementById('phone_number').value = data.phone_number;
+                document.getElementById('phone_number').dispatchEvent(new Event('input'));
+            }
+            if (data.id_number) {
+                document.getElementById('id_number').value = data.id_number;
+                document.getElementById('id_number').dispatchEvent(new Event('input'));
+            }
+            if (data.loan_type) {
+                document.getElementById('loan_type').value = data.loan_type;
+            }
+            
+            // Ensure loading overlay is hidden on page load
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            if (loadingOverlay) {
+                loadingOverlay.style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>

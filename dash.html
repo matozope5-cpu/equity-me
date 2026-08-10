@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loan Dashboard | Equity Eazzy Loans</title>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="192x192" href="icons/icon.192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="icons/icon.512.png" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        :root {
+            --primary: #9A381F;
+            --primary-dark: #7A2A18;
+            --secondary: #FAE25D;
+            --accent: #FAE25D;
+            --white: #FFFFFF;
+            --off-white: #F9FAFB;
+            --light-gray: #E8EDF2;
+            --gray: #64748B;
+            --dark-gray: #334155;
+            --black: #1E293B;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
+            --border-radius-sm: 8px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 16px;
+            --border-radius-xl: 20px;
+            --border-radius-full: 9999px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f0f9ff 0%, #fef6ff 100%);
+            color: var(--black);
+            line-height: 1.5;
+        }
+
+        /* Header */
+        .dashboard-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 1rem;
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 20% 80%, rgba(250, 226, 93, 0.15) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--secondary);
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .logo-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--white);
+        }
+
+        .logo-text .equity {
+            color: var(--secondary);
+        }
+
+        .logo-text .eazzy {
+            color: var(--white);
+        }
+
+        .logo-text .loans {
+            color: var(--secondary);
+        }
+
+        .user-menu {
+            position: relative;
+        }
+
+        .menu-toggle {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .menu-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .menu-dropdown {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            background: var(--white);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-lg);
+            min-width: 180px;
+            display: none;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .menu-dropdown.show {
+            display: block;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1rem;
+            color: var(--dark-gray);
+            text-decoration: none;
+            transition: all 0.2s;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item:hover {
+            background: var(--off-white);
+            color: var(--primary);
+        }
+
+        .menu-item i {
+            width: 1.25rem;
+            text-align: center;
+        }
+
+        /* User Welcome */
+        .user-welcome {
+            padding: 1.5rem 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .greeting {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .greeting-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+        }
+
+        .greeting-subtitle {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .user-name {
+            color: var(--primary);
+        }
+
+        /* Status Card */
+        .status-card {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            margin: 0 1rem 1.5rem;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--light-gray);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .status-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius-full);
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .status-icon {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .status-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+        }
+
+        .status-text {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .status-text strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .disbursement-timer {
+            background: linear-gradient(135deg, var(--off-white) 0%, var(--light-gray) 100%);
+            border-radius: var(--border-radius-md);
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .timer-label {
+            font-size: 0.875rem;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .timer-value {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary);
+            letter-spacing: 0.05em;
+        }
+
+        .timer-value .hours-sep {
+            margin: 0 0.1rem;
+        }
+
+        .timer-note {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        .timer-note i {
+            margin-right: 0.3rem;
+            color: var(--warning);
+        }
+
+        /* Progress bar for 24hr */
+        .progress-container {
+            margin-top: 1rem;
+            background: var(--light-gray);
+            border-radius: var(--border-radius-full);
+            height: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: var(--border-radius-full);
+            width: 0%;
+            transition: width 1s ease;
+        }
+
+        /* Loan Details Grid */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin: 0 1rem 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .detail-card {
+            background: var(--white);
+            border-radius: var(--border-radius-md);
+            padding: 1rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--light-gray);
+            transition: all 0.3s;
+        }
+
+        .detail-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .detail-card.featured {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+        }
+
+        .detail-card.featured .detail-label,
+        .detail-card.featured .detail-value {
+            color: var(--white);
+        }
+
+        .detail-label {
+            font-size: 0.75rem;
+            color: var(--gray);
+            margin-bottom: 0.25rem;
+            font-weight: 500;
+        }
+
+        .detail-value {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--dark-gray);
+        }
+
+        .detail-card.featured .detail-value {
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+
+        /* Actions Section */
+        .actions-section {
+            margin: 0 1rem 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .action-btn {
+            background: var(--white);
+            border: 2px solid var(--light-gray);
+            border-radius: var(--border-radius-md);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--dark-gray);
+        }
+
+        .action-btn:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .action-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: rgba(154, 56, 31, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .action-label {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-align: center;
+        }
+
+        /* Trust Indicators */
+        .trust-indicators {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin: 0 1rem 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .trust-item {
+            background: var(--white);
+            border-radius: var(--border-radius-md);
+            padding: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--light-gray);
+        }
+
+        .trust-icon {
+            width: 2rem;
+            height: 2rem;
+            background: rgba(154, 56, 31, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+
+        .trust-text {
+            font-size: 0.75rem;
+            color: var(--dark-gray);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .dashboard-footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 1.5rem 1rem;
+            margin-top: 2rem;
+            border-top-left-radius: 24px;
+            border-top-right-radius: 24px;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            background: var(--secondary);
+            border-radius: var(--border-radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-dark);
+            font-size: 0.875rem;
+        }
+
+        .footer-logo-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        .footer-logo-text .eazzy {
+            color: var(--secondary);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: var(--secondary);
+        }
+
+        .footer-copyright {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 1rem;
+        }
+
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            flex-direction: column;
+        }
+
+        .loading-spinner {
+            width: 3.5rem;
+            height: 3.5rem;
+            border: 3px solid rgba(154, 56, 31, 0.1);
+            border-radius: 50%;
+            border-top: 3px solid var(--primary);
+            animation: spin 1s linear infinite;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: var(--dark-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 480px) {
+            .details-grid,
+            .actions-grid,
+            .trust-indicators {
+                grid-template-columns: 1fr;
+            }
+
+            .greeting-title {
+                font-size: 1.25rem;
+            }
+
+            .status-title {
+                font-size: 1rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .timer-value {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .trust-indicators {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Focus states for accessibility */
+        .menu-toggle:focus-visible,
+        .action-btn:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* Fade in animation for timer */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .status-card {
+            animation: fadeInUp 0.6s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="equity">Equity</span>
+                    <span class="eazzy">Eazzy</span>
+                    <span class="loans">Loans</span>
+                </div>
+            </div>
+
+            <div class="user-menu">
+                <button class="menu-toggle" id="menuToggle" aria-label="User menu">
+                    <i class="fas fa-user-circle"></i>
+                </button>
+                <div class="menu-dropdown" id="menuDropdown">
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-user"></i>
+                        <span>My Profile</span>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-history"></i>
+                        <span>Loan History</span>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="#" class="menu-item" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- User Welcome -->
+        <section class="user-welcome">
+            <div class="greeting">
+                <h1 class="greeting-title" id="welcomeTitle">Welcome, <span class="user-name" id="userName">Customer</span>!</h1>
+                <p class="greeting-subtitle">Your loan application has been successfully processed</p>
+            </div>
+        </section>
+
+        <!-- Status Card -->
+        <div class="status-card">
+            <div class="status-badge">
+                <i class="fas fa-check-circle status-icon"></i>
+                <span>Loan Approved</span>
+            </div>
+            <h2 class="status-title">Your Funds Are Being Processed</h2>
+            <p class="status-text">
+                Your loan has been approved and will be disbursed to your M-Pesa account
+                <strong>within 24 hours</strong> from approval.
+            </p>
+
+            <div class="disbursement-timer">
+                <div class="timer-label">
+                    <i class="fas fa-clock" style="margin-right: 0.4rem; color: var(--gray);"></i>
+                    Estimated Disbursement Time
+                </div>
+                <div class="timer-value" id="arrivalTime">
+                    <span id="hoursDisplay">24</span><span class="hours-sep">:</span>
+                    <span id="minutesDisplay">00</span><span class="hours-sep">:</span>
+                    <span id="secondsDisplay">00</span>
+                </div>
+                <div class="timer-note">
+                    <i class="fas fa-info-circle"></i>
+                    Funds typically arrive within 24 hours — you'll get an SMS confirmation
+                </div>
+                <!-- Progress bar -->
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loan Details -->
+        <div class="details-grid">
+            <div class="detail-card featured">
+                <div class="detail-label">Approved Loan Amount</div>
+                <div class="detail-value" id="loanAmount">Ksh 0</div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-label">Processing Fee</div>
+                <div class="detail-value" id="processingFee">Ksh 0</div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-label">Total Repayment</div>
+                <div class="detail-value" id="repaymentAmount">Ksh 0</div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-label">Term</div>
+                <div class="detail-value">2 Months</div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-label">Interest Rate</div>
+                <div class="detail-value">10%</div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-label">Due Date</div>
+                <div class="detail-value" id="dueDate">--/--/----</div>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <section class="actions-section">
+            <h3 class="section-title">Quick Actions</h3>
+            <div class="actions-grid">
+                <a href="#" class="action-btn">
+                    <div class="action-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <div class="action-label">Repayment Schedule</div>
+                </a>
+
+                <a href="#" class="action-btn">
+                    <div class="action-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <div class="action-label">Download Agreement</div>
+                </a>
+
+                <a href="#" class="action-btn">
+                    <div class="action-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="action-label">Contact Support</div>
+                </a>
+
+                <a href="#" class="action-btn">
+                    <div class="action-icon">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <div class="action-label">Apply for More</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Trust Indicators -->
+        <div class="trust-indicators">
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="trust-text">Bank-Level Security</div>
+            </div>
+
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <div class="trust-text">CBK Licensed</div>
+            </div>
+
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="trust-text">24/7 Support</div>
+            </div>
+
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="trust-text">50,000+ Customers</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="footer-logo-icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+                <div class="footer-logo-text">
+                    Equity <span class="eazzy">Eazzy</span> Loans
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <a href="#" class="footer-link">Home</a>
+                <a href="#" class="footer-link">How It Works</a>
+                <a href="#" class="footer-link">FAQs</a>
+                <a href="#" class="footer-link">Contact</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+            </div>
+
+            <div class="footer-copyright">
+                <p>© 2023 Equity Eazzy Loans. Licensed and regulated by the Central Bank of Kenya.</p>
+                <p>Customer Support: 0700 000 000 | Email: support@equityeazzyloans.co.ke</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Loading Dashboard</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            const menuToggle = document.getElementById('menuToggle');
+            const menuDropdown = document.getElementById('menuDropdown');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const userNameEl = document.getElementById('userName');
+            const welcomeTitle = document.getElementById('welcomeTitle');
+            const loanAmountEl = document.getElementById('loanAmount');
+            const processingFeeEl = document.getElementById('processingFee');
+            const repaymentAmountEl = document.getElementById('repaymentAmount');
+            const dueDateEl = document.getElementById('dueDate');
+            const hoursDisplay = document.getElementById('hoursDisplay');
+            const minutesDisplay = document.getElementById('minutesDisplay');
+            const secondsDisplay = document.getElementById('secondsDisplay');
+            const progressBar = document.getElementById('progressBar');
+
+            // Show loading
+            loadingOverlay.style.display = 'flex';
+
+            // Utility functions
+            function formatDate(date) {
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                return date.toLocaleDateString('en-US', options);
+            }
+
+            function generateReferenceNumber() {
+                const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                let result = 'EEL-';
+                for (let i = 0; i < 6; i++) {
+                    result += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                return result;
+            }
+
+            // 24-hour disbursement timer (counts down from 24:00:00)
+            function startDisbursementTimer() {
+                let totalSeconds = 24 * 60 * 60; // 24 hours in seconds
+                const total = totalSeconds;
+
+                const timerInterval = setInterval(() => {
+                    if (totalSeconds <= 0) {
+                        clearInterval(timerInterval);
+                        hoursDisplay.textContent = '00';
+                        minutesDisplay.textContent = '00';
+                        secondsDisplay.textContent = '00';
+                        progressBar.style.width = '100%';
+                        // Optional: change color or show "Arrived!" state
+                        document.querySelector('.timer-value').style.color = 'var(--success)';
+                        document.querySelector('.timer-note').innerHTML =
+                            '<i class="fas fa-check-circle" style="color: var(--success);"></i> Funds have been disbursed! Check your M-Pesa.';
+                        return;
+                    }
+
+                    const hrs = Math.floor(totalSeconds / 3600);
+                    const mins = Math.floor((totalSeconds % 3600) / 60);
+                    const secs = totalSeconds % 60;
+
+                    hoursDisplay.textContent = hrs.toString().padStart(2, '0');
+                    minutesDisplay.textContent = mins.toString().padStart(2, '0');
+                    secondsDisplay.textContent = secs.toString().padStart(2, '0');
+
+                    // Update progress bar (percentage of time elapsed)
+                    const elapsed = total - totalSeconds;
+                    const percent = (elapsed / total) * 100;
+                    progressBar.style.width = percent + '%';
+
+                    totalSeconds--;
+                }, 1000);
+            }
+
+            // Load user data
+            function loadDashboardData() {
+                const loanData = JSON.parse(sessionStorage.getItem('myLoan') || '{}');
+                const approvedData = JSON.parse(sessionStorage.getItem('loanApproved') || '{}');
+
+                // Check if user has data
+                if (!loanData.phone_number && !approvedData.phone_number) {
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 2000);
+                    return;
+                }
+
+                // Use approved data if available, otherwise use loan data
+                const userData = approvedData.name ? approvedData : loanData;
+
+                // Set user name
+                if (userData.name) {
+                    userNameEl.textContent = userData.name;
+                    welcomeTitle.textContent = `Welcome, ${userData.name}!`;
+                }
+
+                // Set loan details
+                if (userData.loan_amount) {
+                    const loanAmount = parseInt(userData.loan_amount);
+                    const processingFee = userData.processing_fee || 0;
+                    const repaymentAmount = Math.round(loanAmount * 1.1);
+
+                    loanAmountEl.textContent = `Ksh ${loanAmount.toLocaleString()}`;
+                    processingFeeEl.textContent = `Ksh ${parseInt(processingFee).toLocaleString()}`;
+                    repaymentAmountEl.textContent = `Ksh ${repaymentAmount.toLocaleString()}`;
+
+                    // Set due date (2 months from now)
+                    const dueDate = new Date();
+                    dueDate.setMonth(dueDate.getMonth() + 2);
+                    dueDateEl.textContent = formatDate(dueDate);
+
+                    // Generate and store reference number
+                    if (!userData.referenceNumber) {
+                        userData.referenceNumber = generateReferenceNumber();
+                        sessionStorage.setItem('myLoan', JSON.stringify(userData));
+                    }
+                }
+
+                // Start 24-hour disbursement timer
+                startDisbursementTimer();
+            }
+
+            // Event Listeners
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                menuDropdown.classList.toggle('show');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!menuDropdown.contains(e.target) && !menuToggle.contains(e.target)) {
+                    menuDropdown.classList.remove('show');
+                }
+            });
+
+            logoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                loadingOverlay.style.display = 'flex';
+                loadingOverlay.querySelector('.loading-text').textContent = 'Logging out...';
+
+                setTimeout(() => {
+                    // Clear session data
+                    sessionStorage.removeItem('myLoan');
+                    sessionStorage.removeItem('loanApproved');
+                    sessionStorage.removeItem('userData');
+
+                    // Redirect to home
+                    window.location.href = 'index.html';
+                }, 1500);
+            });
+
+            // Simulate data loading
+            setTimeout(() => {
+                loadDashboardData();
+                loadingOverlay.style.display = 'none';
+            }, 2000);
+
+            // Add event listeners to action buttons
+            document.querySelectorAll('.action-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadingOverlay.style.display = 'flex';
+                    loadingOverlay.querySelector('.loading-text').textContent = 'Loading...';
+
+                    setTimeout(() => {
+                        loadingOverlay.style.display = 'none';
+
+                        // In a real app, this would navigate to the appropriate page
+                        const action = this.querySelector('.action-label').textContent;
+                        alert(`This would open the "${action}" page in a real application.`);
+                    }, 1000);
+                });
+            });
+
+            // Initialize
+            loadDashboardData();
+        });
+    </script>
+</body>
+</html>

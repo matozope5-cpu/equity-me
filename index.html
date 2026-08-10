@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equity Eazzy Loans | Fast M-Pesa Loans</title>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="192x192" href="icons/icon.192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icons/icon.512.png">
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #9A381F;
+            --primary-dark: #7A2A18;
+            --secondary: #FAE25D;
+            --accent: #FAE25D;
+            --white: #FFFFFF;
+            --off-white: #F9FAFB;
+            --light-gray: #E8EDF2;
+            --gray: #64748B;
+            --dark-gray: #334155;
+            --black: #1E293B;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
+            --border-radius-sm: 8px;
+            --border-radius-md: 16px;
+            --border-radius-lg: 24px;
+            --border-radius-xl: 32px;
+            --container-padding: 1.25rem;
+            --section-spacing: 3.5rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--off-white);
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        /* Typography scale for mobile */
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 1.25rem;
+            color: var(--gray);
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--white);
+            padding: 1rem var(--container-padding);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--primary);
+            border-radius: var(--border-radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 1.25rem;
+        }
+
+        .logo-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--black);
+        }
+
+        .logo-text .equity {
+            color: var(--primary);
+        }
+
+        .logo-text .eazzy {
+            color: var(--secondary);
+        }
+
+        .logo-text .loans {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-gray);
+            cursor: pointer;
+            padding: 0.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 2.5rem var(--container-padding) 4rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 20% 80%, rgba(250, 226, 93, 0.15) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            margin-bottom: 1.25rem;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.125rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background-color: var(--secondary);
+            color: var(--primary-dark);
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius-xl);
+            border: none;
+            text-decoration: none;
+            box-shadow: var(--shadow-lg);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .btn-primary:hover {
+            background-color: #f5d53a;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Loan Amount Card */
+        .loan-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 1.75rem;
+            margin: -2.5rem auto 2rem;
+            max-width: 400px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            border: 2px solid var(--secondary);
+        }
+
+        .loan-amount {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 2.5rem;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .loan-subtitle {
+            font-size: 1rem;
+            color: var(--gray);
+            margin-bottom: 0;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 0 var(--container-padding) var(--section-spacing);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header p {
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius-md);
+            padding: 1.75rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--light-gray);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--secondary);
+        }
+
+        .feature-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            background-color: rgba(154, 56, 31, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            color: var(--primary);
+            font-size: 1.75rem;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 0 var(--container-padding) var(--section-spacing);
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--white);
+            border-radius: var(--border-radius-lg);
+            margin-bottom: 2rem;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            position: relative;
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 2.5rem;
+            left: 2.5rem;
+            width: 2px;
+            height: calc(100% - 5rem);
+            background-color: var(--light-gray);
+            z-index: 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            min-width: 3rem;
+            height: 3rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            color: var(--black);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            padding: 0 var(--container-padding) var(--section-spacing);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .trust-badges {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .trust-badge {
+            background-color: var(--white);
+            border-radius: var(--border-radius-md);
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--light-gray);
+        }
+
+        .trust-badge:hover {
+            border-color: var(--secondary);
+        }
+
+        .trust-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: var(--border-radius-md);
+            background-color: rgba(154, 56, 31, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .trust-text h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+            color: var(--black);
+        }
+
+        .trust-text p {
+            font-size: 0.875rem;
+            margin-bottom: 0;
+            color: var(--gray);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 2.5rem var(--container-padding) 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: var(--secondary);
+            border-radius: var(--border-radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-dark);
+            font-size: 1.25rem;
+        }
+
+        .footer-logo-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+
+        .footer-logo-text .eazzy {
+            color: var(--secondary);
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            :root {
+                --container-padding: 2rem;
+                --section-spacing: 4rem;
+            }
+
+            html {
+                font-size: 17px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .btn-primary {
+                width: auto;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .trust-badges {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .trust-badge {
+                flex: 1;
+                min-width: 200px;
+            }
+
+            .footer-links {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 1024px) {
+            :root {
+                --container-padding: 3rem;
+                --section-spacing: 5rem;
+            }
+
+            html {
+                font-size: 18px;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2.25rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .steps {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .steps::before {
+                top: 2.5rem;
+                left: 2.5rem;
+                right: 2.5rem;
+                width: calc(100% - 5rem);
+                height: 2px;
+            }
+
+            .step {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+                width: 30%;
+            }
+
+            .step-content {
+                text-align: center;
+            }
+
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <div class="header-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="equity">Equity</span>
+                    <span class="eazzy">Eazzy</span>
+                    <span class="loans">Loans</span>
+                </div>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Instant Cash When You Need It</h1>
+            <p>Get M-Pesa loans in minutes with our fast, secure, and paperless application process. No hidden fees, no unnecessary paperwork.</p>
+            <button class="btn-primary" id="applyBtn">
+                Apply Now <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <main>
+        <div class="loan-card fade-in">
+            <div class="loan-amount">Ksh 500 - 50,000</div>
+            <p class="loan-subtitle">Flexible loan amounts with competitive rates. First-time borrowers qualify for up to Ksh 10,000.</p>
+        </div>
+
+        <section class="features-section">
+            <div class="section-header">
+                <h2>Why Choose Equity Eazzy Loans</h2>
+                <p>We're changing the way Kenyans access quick loans with a customer-first approach</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Instant Approval</h3>
+                    <p>Get approved within minutes, not days. Our automated system works 24/7.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure & Private</h3>
+                    <p>Your data is protected with bank-level encryption and privacy controls.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Flexible Repayment</h3>
+                    <p>Choose repayment terms that work for your budget and schedule.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="trust-section">
+            <div class="section-header">
+                <h2>Trusted & Regulated</h2>
+                <p>We operate with full transparency and regulatory compliance</p>
+            </div>
+
+            <div class="trust-badges">
+                <div class="trust-badge fade-in">
+                    <div class="trust-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="trust-text">
+                        <h4>Secure Transactions</h4>
+                        <p>End-to-end encryption for all data and transactions</p>
+                    </div>
+                </div>
+
+                <div class="trust-badge fade-in">
+                    <div class="trust-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="trust-text">
+                        <h4>CBK Licensed</h4>
+                        <p>Fully licensed and regulated by the Central Bank of Kenya</p>
+                    </div>
+                </div>
+
+                <div class="trust-badge fade-in">
+                    <div class="trust-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="trust-text">
+                        <h4>50,000+ Customers</h4>
+                        <p>Trusted by thousands of Kenyans nationwide</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="footer-logo-icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+                <div class="footer-logo-text">
+                    Equity <span class="eazzy">Eazzy</span> Loans
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#">About Us</a>
+                <a href="#">How It Works</a>
+                <a href="#">Rates & Fees</a>
+                <a href="#">FAQs</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+
+            <p class="copyright">&copy; 2023 Equity Eazzy Loans. All rights reserved. A licensed credit provider.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Apply button functionality
+        document.getElementById('applyBtn').addEventListener('click', () => {
+            window.location.href = 'eligibility.html';
+        });
+
+        // Scroll animation for fade-in elements
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        fadeElements.forEach(element => {
+            fadeObserver.observe(element);
+        });
+
+        // Add a simple loading animation
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add slight delay to ensure DOM is ready
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 50);
+        });
+
+        // Set initial body opacity to 0 for fade-in effect
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.5s ease';
+    </script>
+</body>
+
+</html>
