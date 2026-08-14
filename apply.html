@@ -12,11 +12,796 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet" />
     <style>
-        /* ... your existing CSS (unchanged, omitted for brevity) ... */
-        /* Keep everything as before – copy from your original apply.html */
-        :root { /* ... */ }
-        * { /* ... */ }
-        /* ... all styles ... */
+        :root {
+            --primary: #9A381F;
+            --primary-dark: #7A2A18;
+            --secondary: #FAE25D;
+            --accent: #FAE25D;
+            --white: #FFFFFF;
+            --off-white: #F9FAFB;
+            --light-gray: #E8EDF2;
+            --gray: #64748B;
+            --dark-gray: #334155;
+            --black: #1E293B;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
+            --border-radius-sm: 8px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 16px;
+            --border-radius-xl: 20px;
+            --border-radius-full: 9999px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f0f9ff 0%, #fef6ff 100%);
+            color: var(--black);
+            padding: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Header */
+        .page-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            padding: 1rem;
+            box-shadow: var(--shadow-sm);
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            color: var(--gray);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--border-radius-sm);
+            transition: all 0.2s;
+        }
+
+        .back-btn:hover {
+            background: var(--light-gray);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 2rem;
+            height: 2rem;
+            background: var(--primary);
+            border-radius: var(--border-radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 1rem;
+        }
+
+        .logo-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--black);
+        }
+
+        .logo-text .equity {
+            color: var(--primary);
+        }
+
+        .logo-text .eazzy {
+            color: var(--secondary);
+        }
+
+        .logo-text .loans {
+            color: var(--primary);
+        }
+
+        .progress-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--light-gray);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+            width: 50%;
+            transition: width 0.3s ease;
+        }
+
+        /* Main content */
+        .application-container {
+            max-width: 500px;
+            margin: 4.5rem auto 2rem;
+        }
+
+        /* User greeting */
+        .user-greeting {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid var(--primary);
+        }
+
+        .user-name {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .greeting-text {
+            color: var(--dark-gray);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Loan summary */
+        .loan-summary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+
+        .summary-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .summary-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-md);
+            padding: 0.75rem;
+        }
+
+        .summary-label {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin-bottom: 0.25rem;
+        }
+
+        .summary-value {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* Loan options */
+        .loan-options-section {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .section-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+
+        .loan-options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .loan-option {
+            background: var(--off-white);
+            border: 2px solid var(--light-gray);
+            border-radius: var(--border-radius-md);
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .loan-option:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+            border-color: var(--primary);
+        }
+
+        .loan-option.selected {
+            background: rgba(154, 56, 31, 0.08);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .loan-option.selected::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 0.75rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+
+        .loan-option.selected::after {
+            content: '✓';
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 20px;
+            height: 20px;
+            color: var(--white);
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loan-amount {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--black);
+            margin-bottom: 0.25rem;
+        }
+
+        .loan-fee {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        /* Payment info */
+        .payment-info {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border-top: 4px solid var(--secondary);
+        }
+
+        .info-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: rgba(250, 226, 93, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .info-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            color: var(--dark-gray);
+        }
+
+        .info-text {
+            font-size: 0.95rem;
+            color: var(--gray);
+        }
+
+        /* Submit button */
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--secondary);
+            color: var(--primary-dark);
+            border: none;
+            border-radius: var(--border-radius-xl);
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            background: #f5d53a;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(154, 56, 31, 0.2);
+        }
+
+        .submit-btn:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .error-message {
+            text-align: center;
+            color: var(--error);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        /* App promo */
+        .app-promo {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            display: none;
+        }
+
+        .promo-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            opacity: 0.9;
+        }
+
+        .promo-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .promo-text {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--secondary);
+            color: var(--primary-dark);
+            border: none;
+            border-radius: var(--border-radius-lg);
+            padding: 0.75rem 1.5rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: #f5d53a;
+        }
+
+        /* Loading overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            flex-direction: column;
+        }
+
+        .loading-spinner {
+            width: 3.5rem;
+            height: 3.5rem;
+            border: 3px solid rgba(154, 56, 31, 0.1);
+            border-radius: 50%;
+            border-top: 3px solid var(--primary);
+            animation: spin 1s linear infinite;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: var(--dark-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .loading-subtext {
+            font-size: 0.95rem;
+            color: var(--gray);
+            max-width: 250px;
+            text-align: center;
+        }
+
+        /* STK Push Overlay */
+        .stk-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .stk-card {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            max-width: 90%;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .stk-icon {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .stk-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--black);
+            margin-bottom: 1rem;
+        }
+
+        .stk-message {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .stk-phone {
+            background: var(--off-white);
+            border-radius: var(--border-radius-md);
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .stk-timer {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-top: 1rem;
+        }
+
+        /* ── Custom SweetAlert overrides for the modal ── */
+        .swal2-popup {
+            border-radius: 20px !important;
+            padding: 24px 20px 20px !important;
+            max-width: 380px !important;
+            width: 92% !important;
+        }
+
+        .swal2-title {
+            font-size: 1.2rem !important;
+            color: var(--primary) !important;
+            font-weight: 700 !important;
+            margin-bottom: 12px !important;
+        }
+
+        .swal2-html-container {
+            font-size: 0.9rem !important;
+            color: #1a1a1a !important;
+            line-height: 1.5 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .swal2-actions {
+            flex-direction: column !important;
+            width: 100% !important;
+            gap: 8px !important;
+            margin-top: 16px !important;
+        }
+
+        .swal2-actions .swal2-confirm,
+        .swal2-actions .swal2-cancel {
+            width: 100% !important;
+            margin: 0 !important;
+            border-radius: 12px !important;
+            padding: 14px 18px !important;
+            font-size: 1rem !important;
+            font-weight: 600 !important;
+            box-sizing: border-box !important;
+            justify-content: center !important;
+            min-height: 52px !important;
+        }
+
+        .swal2-actions .swal2-confirm {
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark)) !important;
+            border: none !important;
+            color: #fff !important;
+            box-shadow: 0 6px 16px rgba(154, 56, 31, 0.25) !important;
+        }
+
+        .swal2-actions .swal2-confirm:hover {
+            box-shadow: 0 8px 24px rgba(154, 56, 31, 0.35) !important;
+            transform: translateY(-1px);
+        }
+
+        .swal2-actions .swal2-cancel {
+            background: #f1f5f1 !important;
+            border: 1px solid #dce5dc !important;
+            color: #1a2a1a !important;
+            box-shadow: none !important;
+        }
+
+        .swal2-actions .swal2-cancel:hover {
+            background: #e8efe8 !important;
+            border-color: #c0d0c0 !important;
+        }
+
+        .swal2-icon {
+            display: none !important;
+        }
+
+        /* Phone input styles inside modal */
+        .phone-input-wrap {
+            display: flex;
+            align-items: center;
+            border: 2px solid #dce5dc;
+            border-radius: 12px;
+            background: #fff;
+            overflow: hidden;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 4px;
+        }
+
+        .phone-input-wrap:focus-within {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(154, 56, 31, 0.12);
+        }
+
+        .phone-prefix {
+            background: #f0f5f0;
+            padding: 12px 14px;
+            font-weight: 600;
+            color: #1a2a1a;
+            border-right: 1px solid #dce5dc;
+            font-size: 1rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+            letter-spacing: 0.3px;
+        }
+
+        .phone-input {
+            flex: 1;
+            border: none;
+            padding: 12px 14px;
+            font-size: 1rem;
+            outline: none;
+            background: transparent;
+            min-width: 0;
+            font-family: inherit;
+            color: #1a1a1a;
+        }
+
+        .phone-input::placeholder {
+            color: #b0b8b0;
+            font-weight: 400;
+            font-size: 0.9rem;
+        }
+
+        .phone-input-wrap.error {
+            border-color: #dc3545 !important;
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.12) !important;
+        }
+
+        .phone-error-msg {
+            color: #dc3545;
+            font-size: 0.78rem;
+            margin-top: 6px;
+            display: none;
+            text-align: left;
+        }
+
+        .phone-error-msg.show {
+            display: block;
+        }
+
+        .loan-details-box {
+            text-align: left;
+            background: #f8faf8;
+            padding: 14px 16px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #eaf0ea;
+        }
+
+        .loan-details-box .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            font-size: 0.92rem;
+        }
+
+        .loan-details-box .detail-row:not(:last-child) {
+            border-bottom: 1px solid #eaf0ea;
+            padding-bottom: 6px;
+            margin-bottom: 6px;
+        }
+
+        .loan-details-box .detail-label {
+            color: var(--gray);
+        }
+
+        .loan-details-box .detail-value {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .loan-details-box .detail-value.primary {
+            color: var(--primary);
+        }
+
+        .fee-notice {
+            background: rgba(154, 56, 31, 0.06);
+            padding: 10px 14px;
+            border-radius: 10px;
+            margin: 0 0 16px 0;
+            text-align: center;
+            border-left: 4px solid var(--primary);
+        }
+
+        .fee-notice p {
+            margin: 0;
+            font-weight: 600;
+            color: var(--primary-dark);
+            font-size: 0.95rem;
+        }
+
+        .fee-notice .fee-amount {
+            font-size: 1.05rem;
+        }
+
+        .modal-icon-wrap {
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .modal-icon-wrap i {
+            font-size: 44px;
+            color: var(--primary);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .application-container {
+                margin-top: 4rem;
+            }
+            
+            .loan-options-grid {
+                gap: 0.5rem;
+            }
+            
+            .loan-option {
+                padding: 0.875rem 0.5rem;
+            }
+            
+            .loan-amount {
+                font-size: 1.125rem;
+            }
+            
+            .summary-grid {
+                gap: 0.75rem;
+            }
+            
+            .summary-item {
+                padding: 0.5rem;
+            }
+            
+            .stk-card {
+                padding: 1.5rem;
+            }
+            
+            .stk-icon {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .loan-options-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .summary-grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+        }
+
+        .loan-option:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        .submit-btn:focus-visible {
+            outline: 2px solid var(--primary-dark);
+            outline-offset: 2px;
+        }
     </style>
 </head>
 
